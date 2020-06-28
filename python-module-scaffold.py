@@ -12,8 +12,10 @@ if sys.version_info[0] < 3 and sys.version_info[1] < 5:
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 current = os.getcwd()
 
-root_files_path = current + '/' + 'module-root-files'
-src_files_path = current + '/' + 'module-src-files'
+# template folder directories containing templates
+# that will be copied into new module
+root_files_path = os.path.join(current, 'module-root-files')
+src_files_path = os.path.join(current, 'module-src-files')
 
 # get expected project path
 project_path = input(f'Enter project directory or hit enter for default [{current}]: ')
@@ -48,18 +50,18 @@ try:
     dst = project_path + os.sep
 
     for files in src:
-        src_file = root_files_path + os.sep + files
+        src_file = os.path.join(root_files_path, files)
         shutil.copy(src_file, dst)
 
     # copy config template to config.ini
-    shutil.copy(dst + 'config.template.ini', dst + 'config.ini')
+    shutil.copy(os.path.join(dst,'config.template.ini'), os.path.join(dst, 'config.ini'))
 
     # copy src files
     src = os.listdir(src_files_path)
     dst = src_path + os.sep
 
     for files in src:
-        src_file = src_files_path + os.sep + files
+        src_file = os.path.join(src_files_path, files)
         shutil.copy(src_file, dst)
 
     # ch dir to project root dir
