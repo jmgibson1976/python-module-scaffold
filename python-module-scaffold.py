@@ -24,7 +24,7 @@ if not project_path:
 # get project name
 project_name = input('Enter project name: ')
 
-project_path = os.path.join(current, project_name)
+project_path = os.path.join(project_path, project_name)
 src_path = os.path.join(project_path, project_name.lower())
 docs_path = os.path.join(project_path, 'docs')
 tests_path = os.path.join(project_path, 'tests')
@@ -50,6 +50,9 @@ try:
     for files in src:
         src_file = root_files_path + os.sep + files
         shutil.copy(src_file, dst)
+
+    # copy config template to config.ini
+    shutil.copy(dst + 'config.template.ini', dst + 'config.ini')
 
     # copy src files
     src = os.listdir(src_files_path)
