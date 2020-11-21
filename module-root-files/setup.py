@@ -1,9 +1,8 @@
-import os
 from setuptools import setup, find_packages
 from {project_name}.config import config
 
 conf = config['Default']
-README = open(os.path.join(os.path.dirname(__file__), "README.md")).read()
+README = open('README.md').read()
 
 setup(
     name=conf['application'],
@@ -20,5 +19,5 @@ setup(
     include_package_data=True,
     zip_safe=False,
     classifiers=[],
-    python_requires='>=3.5'
+    python_requires='>=3.8'
 )

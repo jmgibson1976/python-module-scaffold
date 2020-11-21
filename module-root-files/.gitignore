@@ -61,4 +61,5 @@ docs/_build/
 target/
 
 # Application specific
-config.ini
+logs/*.log
+*.ini
