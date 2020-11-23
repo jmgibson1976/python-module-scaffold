@@ -31,7 +31,7 @@ if not os.path.exists(project_path):
 # get project name
 project_name = input('Enter project name: ')
 
-project_path = os.path.join(project_path, project_name)
+project_path = os.path.join(project_path, project_name.lower())
 src_path = os.path.join(project_path, project_name.lower())
 configs_path = os.path.join(project_path, 'configs')
 logs_path = os.path.join(project_path, 'logs')
@@ -89,7 +89,7 @@ try:
     # https://stackoverflow.com/questions/17140886/how-to-search-and-replace-text-in-a-file
     with fileinput.FileInput('setup.py', inplace=True) as file:
         for line in file:
-            print(line.replace('{project_name}', project_name).rstrip('\n'))
+            print(line.replace('{project_name}', project_name.lower()).rstrip('\n'))
 
 
     # update & save config.ini
